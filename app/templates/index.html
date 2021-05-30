@@ -1,0 +1,42 @@
+<!-- Autor: Brayan Sierra -->
+<head>
+    <meta charset="utf-8">
+    <meta name="index">
+    <title>Campeonato de Futbol</title>
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/plantilla.css') }}">
+</head>
+<br />
+<body>
+    <div style="text-align:center;">
+        <h1>Campeonato de Futbol</h1>
+    </div>
+    <div class="inner contact">
+        <div class="contact-form">
+            <!-- Form - Petición POST al método inicio -->
+            <form id="contact-us" method="post" action="{{ url_for('inicio') }}">
+                <!-- Campos para ingresar el nombre de los equipos -->
+                <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">  
+                    <!-- Equipo 1 -->
+                    <input type="text" name="equipo1" id="equipo1" required="required" class="form" placeholder="Equipo 1"/>
+                    <!-- Equipo 2 -->
+                    <input type="text" name="equipo2" id="equipo2" required="required" class="form" placeholder="Equipo 2"/>
+                    <!-- Equipo 3 -->
+                    <input type="text" name="equipo3" id="equipo3" required="required" class="form" placeholder="Equipo 3"/>
+                    <!-- Equipo 3 -->
+                    <input type="text" name="equipo4" id="equipo4" required="required" class="form" placeholder="Equipo 4"/>
+                    {%if mensaje != ""%}
+                        <h2>{{mensaje}}</h2>
+                    {%endif%}
+
+                </div>
+                <!-- Boton de envío -->
+                <div class="relative fullwidth col-xs-12">
+                     <button type="submit" id="submit" name="submit" class="form-btn semibold">Registrar equipos</button> 
+                </div>
+
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+</body>

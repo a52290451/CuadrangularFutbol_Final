@@ -1,0 +1,65 @@
+<!-- Autor: Brayan Sierra -->
+<head>
+    <meta charset="utf-8">
+    <meta name="posiciones">
+    <title>Tabla de posiciones</title>
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/plantilla.css') }}">
+</head>
+<br />
+<body>
+    <div style="text-align:center;">
+        <h1>Campeonato de Futbol</h1>
+        <h1>Tabla de posiciones</h1>
+    </div>
+    <div class="inner contact">
+        <div class="contact-form">
+            <!-- Form - Reinicia el campeonato -->
+            <form id="contact-us" method="post" action="{{ url_for('reinicio') }}">
+                <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
+                    <div class = "container">    
+                        <!-- Tabla de resultados -->
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Equipo</th>
+                                    <th>Victorias</th>
+                                    <th>Derrotas</th>
+                                    <th>Empates</th>
+                                    <th>Goles Anotados</th>
+                                    <th>Goles Recibidos</th>
+                                    <th>Diferencia de goles</th>
+                                    <th>Puntos</th>
+                                </tr>	
+                            </thead>
+                            <tbody>
+                                <!-- For que presenta los resultados en la tabla -->
+                                {% for resul in resultados %}
+                                    <tr>
+                                        <td> {{resul[0]}}</td>
+                                        <td> {{resul[1]}}</td>
+                                        <td> {{resul[2]}}</td>
+                                        <td> {{resul[3]}}</td>
+                                        <td> {{resul[4]}}</td>
+                                        <td> {{resul[5]}}</td>
+                                        <td> {{resul[6]}}</td>
+                                        <td> {{resul[7]}}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="text-align:center;">
+                    <h1>El ganador del campeonato es:</h1>
+                    <h2>{{resultados[0][0]}}</h2>                    
+                </div>
+                <!-- Boton de envío -->
+                <div class="relative fullwidth col-xs-12">
+                    <button type="submit" id="submit" name="submit" class="form-btn semibold">Inicio</button> 
+                </div>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+</body>

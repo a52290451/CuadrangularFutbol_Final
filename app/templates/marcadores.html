@@ -1,0 +1,53 @@
+<!-- Autor: Brayan Sierra -->
+<head>
+    <meta charset="utf-8">
+    <meta name="marcadores">
+    <title>Marcadores</title>
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/plantilla.css') }}">
+</head>
+<br />
+<body>
+    <div style="text-align:center;">
+        <h1>Campeonato de Futbol</h1>
+        <h1>Marcadores</h1>
+    </div>
+    <div class="inner contact">
+        <div class="contact-form">
+            <!-- Form - Petición POST al método posiciones -->
+            <form id="contact-us" method="post" action="{{ url_for('posiciones') }}">
+                <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
+                    <div class = "container">    
+                        <!-- Tabla para registrar marcadores -->
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>EQUIPO 1</th>
+                                    <th>Goles</th>
+                                    <th>EQUIPO 2</th>
+                                    <th>Goles</th>
+                                </tr>	
+                            </thead>
+                            <tbody>
+                                <!-- For que lista los encuentros -->
+                                {% for enc in encuentros %}
+                                    <tr>
+                                        <td> {{enc[0]}}</td>
+                                        <td><input id="goles1{{encuentros.index(enc)}}" name="goles1{{encuentros.index(enc)}}"+ type="number" min="0" max="10" required></td>
+                                        <td> {{enc[1]}}</td>
+                                        <td><input id="goles2{{encuentros.index(enc)}}" name="goles2{{encuentros.index(enc)}}"+ type="number" min="0" max="10" required></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- Boton de envío -->
+                <div class="relative fullwidth col-xs-12">
+                    <button type="submit" id="submit" name="submit" class="form-btn semibold">Registrar marcadores</button> 
+                </div>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+</body>
